@@ -9,6 +9,7 @@ class BehaviorActionType(Enum):
 @dataclass
 class Behavior:
     Id: int
+    Behaviorkey:str
     Name: str
     ScenceKey: str
     EventKey: str
@@ -20,6 +21,7 @@ class Behavior:
 
 BehaviorList = [Behavior]
 BehaviorMap = {}
+BehaviorKeyMap = {}
 
 def once(func):
     """装饰器：确保函数只执行一次"""
@@ -39,6 +41,7 @@ def StorageInit ():
     BehaviorList.append(Behavior(
         Id=1, 
         Name="准备战斗",
+        Behaviorkey="behavior_key_zhunbei",
         ScenceKey="sence_key_zhunbei",
         EventKey="event_key_shuayuhun",
         ActionId=1,
@@ -49,3 +52,7 @@ def StorageInit ():
     
     for behavior in BehaviorList:
         BehaviorMap[behavior.Id] = behavior
+
+    for behavior in BehaviorList:
+        if behavior.Behaviorkey not in BehaviorKeyMap:
+            BehaviorKeyMap[behavior.Behaviorkey] = behavior
