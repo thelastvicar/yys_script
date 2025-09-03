@@ -1,5 +1,15 @@
 from enum import Enum
 from dataclasses import dataclass
+import sys
+import os
+
+#将上级目录添加到模块搜索路径
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+from common import once
+
 
 
 class BehaviorActionType(Enum):
@@ -23,19 +33,6 @@ BehaviorList = [Behavior]
 BehaviorMap = {}
 BehaviorKeyMap = {}
 
-def once(func):
-    """装饰器：确保函数只执行一次"""
-    executed = False
-    result = None
-    
-    def wrapper(*args, **kwargs):
-        nonlocal executed, result
-        if not executed:
-            result = func(*args, **kwargs)
-            executed = True
-        return result
-    return wrapper
-
 @once
 def StorageInit ():
     BehaviorList.append(Behavior(
@@ -45,7 +42,7 @@ def StorageInit ():
         ScenceKey="sence_key_zhunbei",
         EventKey="event_key_shuayuhun",
         ActionId=1,
-        FeatureId="feature_key_zhunbeianniu",
+        FeatureKey="feature_key_zhunbeianniu",
         BehaviorActionType=BehaviorActionType.featurePos,
         Description="准备战斗"
         ))
