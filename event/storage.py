@@ -17,8 +17,9 @@ class Event:
     Id: int
     EventKey: str
     Description: str
+    CheckFeatureKeys: list[str] = None
     
-EventList = [Event]
+EventList = []
 EventMap = {}
 EventKeyMap = {}
 
@@ -27,7 +28,8 @@ def StorageInit ():
     EventList.append(Event(
         Id=1, 
         EventKey="event_key_shuayuhun",
-        Description="刷御魂"
+        Description="刷御魂",
+        CheckFeatureKeys=["feature_key_zhunbeianniu"]
         ))
     
     for event in EventList:

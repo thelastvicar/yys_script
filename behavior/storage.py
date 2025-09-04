@@ -29,7 +29,7 @@ class Behavior:
     Description: str
 
 
-BehaviorList = [Behavior]
+BehaviorList = []
 BehaviorMap = {}
 BehaviorKeyMap = {}
 

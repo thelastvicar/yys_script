@@ -2,7 +2,7 @@
 from enum import Enum
 from dataclasses import dataclass
 from pynput.mouse import Controller, Button
-from . import Action, ActionType, ActionDelayTime, ActionList, ActionMap, PerformAction
+from .storage import Action, ActionType, ActionDelayTime, ActionList, ActionMap, PerformAction
 from .storage import StorageInit as actionStorageInit
 import time
 import random

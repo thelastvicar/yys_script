@@ -15,7 +15,7 @@ class Sence:
 
 
 
-SenceList = [Sence]
+SenceList = []
 SenceMap = {}
 SenceKeyMap = {}
 

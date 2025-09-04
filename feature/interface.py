@@ -1,12 +1,13 @@
-from . import featureCompareType, feature, CompareImages, featureList, featureKeyMap, Storageinit as featureStorageInit
-from common import once 
+from .storage import featureCompareType, feature, featureList, featureKeyMap, StorageInit as featureStorageInit
+from .compare import CompareImages
 
-class featureDomain:
+
+class FeatureDomain:
     def __init__(self):
         featureStorageInit()
 
     def findFeature(self, feature_key:str):
-        return featureKeyMap.get(feature_key)
+        return featureKeyMap.get(self, feature_key)
     
     def getAllFeatures(self):
         return featureList

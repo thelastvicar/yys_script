@@ -1,6 +1,31 @@
 import cv2
 import numpy as np
 
+
+def display_cv2_array(img_array, window_name="Image"):
+    """
+    展示OpenCV数组（NumPy数组）作为图片
+    :param img_array: OpenCV格式的数组（BGR或灰度）
+    :param window_name: 窗口名称
+    """
+    # 检查数组是否有效
+    if not isinstance(img_array, np.ndarray):
+        raise TypeError("输入必须是NumPy数组")
+    
+    if img_array.size == 0:
+        raise ValueError("数组为空，无法展示")
+    
+    # 展示图片
+    cv2.imshow(window_name, img_array)
+    
+    # 等待用户按键（0表示无限等待，单位毫秒）
+    cv2.waitKey(0)
+    
+    # 关闭所有OpenCV窗口
+    cv2.destroyAllWindows()
+
+
+
 def CompareImages(large_img,  template, threshold=0.9, min_scale=0.5, max_scale=1.1, scale_step=5):
     if large_img is None or template is None:
         raise ValueError("One of the images could not be loaded.")
@@ -10,6 +35,9 @@ def CompareImages(large_img,  template, threshold=0.9, min_scale=0.5, max_scale=
     template_h, template_w = template.shape[:2]
     
     all_matches = []
+
+    # display_cv2_array (large_img, "Large Image")
+    # display_cv2_array (template, "Template Image")
     
     # 生成缩放比例（从 min_scale 到 max_scale 的均匀分布）
     scales = np.linspace(min_scale, max_scale, scale_step)
@@ -39,6 +67,7 @@ def CompareImages(large_img,  template, threshold=0.9, min_scale=0.5, max_scale=
         
         # 找到所有超过阈值的匹配位置
         locations = np.where(result >= threshold)
+        # print(locations)
         
         # 记录匹配区域（左上角、右下角坐标 + 缩放比例）
         for pt in zip(*locations[::-1]):  # (x, y) 顺序
@@ -88,3 +117,4 @@ def remove_overlapping_matches(matches, overlap_threshold=0.5):
             unique.append(match)
     
     return unique
+

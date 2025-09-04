@@ -1,4 +1,4 @@
-from . import Behavior, BehaviorType, BehaviorActionType, BehaviorList, BehaviorMap, BehaviorKeyMap
+from .storage import Behavior, BehaviorMap, BehaviorActionType, BehaviorList, BehaviorMap, BehaviorKeyMap
 from .storage import StorageInit as BehaviorStorageInit
 
 class BehaviorDomain:

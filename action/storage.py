@@ -90,7 +90,7 @@ def PerformAction(action: Action, posX:int, posY:int):
         print("Unknown action type.")
         
 
-ActionList = [Action]
+ActionList = []
 ActionMap = {}
 
 

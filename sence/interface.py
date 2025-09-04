@@ -1,5 +1,5 @@
-from . import Sence, SenceType, SenceKeyMap, SenceMap, SenceList, StorageInit as SenceStorageInit
-from . import evaluate_feature_expression
+from .storage import Sence, SenceKeyMap, SenceMap, SenceList, StorageInit as SenceStorageInit
+from .ast import evaluate_feature_expression
 
 class SenceDomain:
     def __init__(self):
