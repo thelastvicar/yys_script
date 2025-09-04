@@ -21,7 +21,7 @@ class Behavior:
     Id: int
     Behaviorkey:str
     Name: str
-    ScenceKey: str
+    SenceKey: str
     EventKey: str
     ActionId: int
     FeatureKey: str
@@ -39,7 +39,7 @@ def StorageInit ():
         Id=1, 
         Name="准备战斗",
         Behaviorkey="behavior_key_zhunbei",
-        ScenceKey="sence_key_zhunbei",
+        SenceKey="sence_key_zhunbei",
         EventKey="event_key_shuayuhun",
         ActionId=1,
         FeatureKey="feature_key_zhunbeianniu",
