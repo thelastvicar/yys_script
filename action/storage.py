@@ -40,7 +40,7 @@ def click(x, y):
     mouse = Controller()
 
     end_x = x+random.uniform(0, 100)
-    end_y = y+random.uniform(-12, 120)
+    end_y = y+random.uniform(0, 120)
 
     # 移动鼠标到指定位置
     mouse.position = (end_x, end_y)
@@ -58,7 +58,7 @@ def click(x, y):
     Prey = Prey
 
     # 模拟长按的时间（以秒为单位）
-    time.sleep(random.uniform(0.05, 0.12))
+    time.sleep(random.uniform(0.03, 0.06))
 
     # 松开鼠标左键
     mouse.release(Button.left)

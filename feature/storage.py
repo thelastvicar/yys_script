@@ -1,5 +1,6 @@
 from enum import Enum
 from dataclasses import dataclass
+import cv2
 
 import sys
 import os
@@ -25,6 +26,11 @@ class feature:
     CompareType:featureCompareType
     CompareThreshold:int
     LimitEventKeys:list[str]
+    TemplatePath:str=""
+    Template = None
+    MinScale:float
+    MaxScale:float
+    ScaleStep:int
 
 
 featureList = [feature]
@@ -39,7 +45,15 @@ def StorageInit():
         CompareType=featureCompareType.pic,
         CompareThreshold=80,
         LimitEventKeys=["event_key_shuayuhun"],
+        TemplatePath = "template/zhunbeianniu.png",
+        MinScale=0.5,
+        MaxScale=1.2,
+        ScaleStep=5,
     ))
+
+    for feature in featureList:
+        if feature.TemplatePath != "":
+            feature.Template = cv2.imread(feature.TemplatePath)
 
     for feature in featureList:
         featureMap[feature.Id] = feature
