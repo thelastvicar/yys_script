@@ -37,6 +37,22 @@ def StorageInit():
         SenceFeatureDsl="feature_key_tiaozhananniu"
     ))
 
+    SenceList.append(Sence(
+        Id=3,
+        SenceKey="sence_key_shengli",
+        Name="御魂结算界面",
+        Description="御魂结算界面",
+        SenceFeatureDsl="feature_key_shengli"
+    ))
+
+    SenceList.append(Sence(
+        Id=4,
+        SenceKey="sence_key_shengli2",
+        Name="御魂结算界面2",
+        Description="御魂结算界面2",
+        SenceFeatureDsl="feature_key_shengli2"
+    ))
+
     for sence in SenceList:
         SenceMap[sence.Id] = sence
 

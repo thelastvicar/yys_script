@@ -59,6 +59,30 @@ def StorageInit ():
         Description="御魂挑战"
         ))
     
+    BehaviorList.append(Behavior(
+        Id=3, 
+        Name="御魂结算",
+        Behaviorkey="behavior_key_shengli",
+        SenceKey="sence_key_shengli",
+        EventKey="event_key_shuayuhun",
+        ActionId=2,
+        FeatureKey="feature_key_shengli",
+        BehaviorActionType=BehaviorActionType.featurePos,
+        Description="御魂结算"
+        ))
+    
+    BehaviorList.append(Behavior(
+        Id=4, 
+        Name="御魂结算2",
+        Behaviorkey="behavior_key_shengli2",
+        SenceKey="sence_key_shengli2",
+        EventKey="event_key_shuayuhun",
+        ActionId=2,
+        FeatureKey="feature_key_shengli2",
+        BehaviorActionType=BehaviorActionType.featurePos,
+        Description="御魂结算2"
+        ))
+    
     for behavior in BehaviorList:
         BehaviorMap[behavior.Id] = behavior
 

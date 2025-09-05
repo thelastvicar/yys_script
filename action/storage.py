@@ -131,8 +131,8 @@ def doubleClickHard(x, y):
     global Prex
     global Prey
 
-    end_x = x+random.uniform(0, 100)
-    end_y = y+random.uniform(0, 120)
+    end_x = x+random.uniform(-50,50)
+    end_y = y+random.uniform(-50,50)
 
     # 移动鼠标到指定位置
     # mouse.position = (end_x, end_y)
@@ -212,7 +212,7 @@ def StorageInit ():
         Id=2,
         ActionType=ActionType.DoubleClick,
         DelayTime=ActionDelayTime.Random,
-        DelayTimeValue=500,
+        DelayTimeValue=10,
         Description="双击"
         ))
     

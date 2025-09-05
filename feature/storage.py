@@ -62,9 +62,9 @@ def StorageInit():
         CompareThreshold=0.7,
         LimitEventKeys=["event_key_shuayuhun"],
         TemplatePath="templates\zhunbeianniu.png",
-        MinScale=0.5,
+        MinScale=0.8,
         MaxScale=1.2,
-        ScaleStep=5,
+        ScaleStep=3,
     ))
 
     featureList.append(feature(
@@ -74,10 +74,35 @@ def StorageInit():
         CompareThreshold=0.7,
         LimitEventKeys=["event_key_shuayuhun"],
         TemplatePath="templates\\tiaozhananniu.png",
-        MinScale=0.5,
+        MinScale=0.8,
         MaxScale=1.2,
-        ScaleStep=5,
+        ScaleStep=3,
     ))
+
+    featureList.append(feature(
+        Id=3,
+        FeatureKey="feature_key_shengli",
+        CompareType=featureCompareType.pic,
+        CompareThreshold=0.6,
+        LimitEventKeys=["event_key_shuayuhun"],
+        TemplatePath="templates\\shengli.png",
+        MinScale=0.8,
+        MaxScale=1.2,
+        ScaleStep=3,
+    ))
+
+    featureList.append(feature(
+        Id=4,
+        FeatureKey="feature_key_shengli2",
+        CompareType=featureCompareType.pic,
+        CompareThreshold=0.6,
+        LimitEventKeys=["event_key_shuayuhun"],
+        TemplatePath="templates\\shengli2.png",
+        MinScale=0.8,
+        MaxScale=1.2,
+        ScaleStep=3,
+    ))
+
 
     # 加载模板图片（遍历实例，避免变量名覆盖）
     current_script_dir = os.path.dirname(os.path.abspath(__file__))

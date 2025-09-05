@@ -6,6 +6,7 @@ import cv2
 import sys
 import os
 import time
+import threading
 
 #将上级目录添加到模块搜索路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -33,6 +34,21 @@ class Context:
     CurrentFeatureKeys: list[str] = None
     CurrentFeaturePosDict: dict = None
     CurrentBehaviorKey: list[str] = None
+    def clear(self):
+        self.CurrentScreen = None
+        self.CurrentSenceKey = ""
+        self.CurrentEventKey = ""
+        context.CurrentFeatureKeys = []
+        context.CurrentFeaturePosDict = {}
+        context.CurrentBehaviorKey = []
+
+def MatchFeatureThread(context, featureDomain, featureKey):
+    featurePoses = featureDomain.matchFeature(featureKey, context.CurrentScreen)
+    if len(featurePoses) > 0:
+        featureHitMap[featureKey] = True
+        context.CurrentFeatureKeys.append(featureKey)
+        context.CurrentFeaturePosDict[featureKey] = featurePoses
+        print(f"Feature {featureKey} matched at positions: {featurePoses}")    
 
 
 if __name__ == "__main__":
@@ -69,14 +85,25 @@ if __name__ == "__main__":
         #特征匹配
         featureHitMap = dict()
         features = event.CheckFeatureKeys
+        threads = []
         for featureKey in features:
+            thread = threading.Thread(target=MatchFeatureThread, args=(context, featureDomain, featureKey))
+            threads.append(thread)
+            thread.start()
+            """
             featurePoses = featureDomain.matchFeature(featureKey, context.CurrentScreen)
             if len(featurePoses) > 0:
                 featureHitMap[featureKey] = True
                 context.CurrentFeatureKeys.append(featureKey)
                 context.CurrentFeaturePosDict[featureKey] = featurePoses
                 print(f"Feature {featureKey} matched at positions: {featurePoses}")    
+            """
         
+        # 等待所有线程完成
+        for thread in threads:
+            thread.join()
+
+
         #场景匹配
         hitSences = senceDomain.MatchSence(featureHitMap)
         for sence in hitSences:
@@ -85,7 +112,7 @@ if __name__ == "__main__":
         
         if len(hitSences) == 0:
             print("no matching sence")
-            context = Context()
+            context.clear()
             continue
 
         #行为匹配
@@ -102,7 +129,7 @@ if __name__ == "__main__":
                 
 
         # context清理
-        context = Context()
+        context.clear()
         time.sleep(0.5)
-        break
+
 
