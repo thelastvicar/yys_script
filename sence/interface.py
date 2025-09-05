@@ -1,5 +1,5 @@
 from .storage import Sence, SenceKeyMap, SenceMap, SenceList, StorageInit as SenceStorageInit
-from .ast import evaluate_feature_expression
+from .ast import EvaluateFeatureDsl
 
 class SenceDomain:
     def __init__(self):
@@ -20,7 +20,7 @@ class SenceDomain:
         resSenceList = []
         for sence in SenceList:
             featureKey = sence.SenceFeatureDsl
-            result = evaluate_feature_expression(sence.SenceFeatureDsl, featureValues)
+            result = EvaluateFeatureDsl(sence.SenceFeatureDsl, featureValues)
             if result:
                 resSenceList.append(sence)
         return resSenceList

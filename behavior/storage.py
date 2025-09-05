@@ -41,7 +41,7 @@ def StorageInit ():
         Behaviorkey="behavior_key_zhunbei",
         SenceKey="sence_key_zhunbei",
         EventKey="event_key_shuayuhun",
-        ActionId=1,
+        ActionId=2,
         FeatureKey="feature_key_zhunbeianniu",
         BehaviorActionType=BehaviorActionType.featurePos,
         Description="准备战斗"

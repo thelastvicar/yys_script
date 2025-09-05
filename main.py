@@ -72,11 +72,32 @@ if __name__ == "__main__":
         for featureKey in features:
             featurePoses = featureDomain.matchFeature(featureKey, context.CurrentScreen)
             if len(featurePoses) > 0:
-                featureHitMap[featureKey] = featurePoses
+                featureHitMap[featureKey] = True
                 context.CurrentFeatureKeys.append(featureKey)
                 context.CurrentFeaturePosDict[featureKey] = featurePoses
                 print(f"Feature {featureKey} matched at positions: {featurePoses}")    
         
-        break
+        #场景匹配
+        hitSences = senceDomain.MatchSence(featureHitMap)
+        for sence in hitSences:
+            print(f"Matched Sence: {sence.SenceKey}")
+            context.CurrentSenceKey = sence.SenceKey
+        
+        #行为匹配
+        hitBehaviors = behaviorDomain.get_behaviors_by_scene_and_event(sence.SenceKey, event.EventKey)
+        for behavior in hitBehaviors:
+            print(f"Matched Behavior: {behavior.Behaviorkey}- {behavior.ActionId}")
+            context.CurrentBehaviorKey.append(behavior.Behaviorkey)
+            
+            #执行行为
+            action = actionDomain.GetActionById(behavior.ActionId)
+            for pos in context.CurrentFeaturePosDict.get(behavior.FeatureKey, []):
+                print(f"Performing Action: {action.Id} at position {pos}")
+                actionDomain.PerformAction(action.Id, pos[0],pos[1])
+                
 
+        # context清理
+        context = Context()
+        time.sleep(0.5)
+        break
 

@@ -92,6 +92,13 @@ def evaluate_feature_expression(ast, feature_values):
     else:
         raise ValueError(f"未知的节点类型: {ast['type']}")
 
+
+def EvaluateFeatureDsl(expression, featureValues):
+    parser = FeatureLogicParser(expression)
+    ast = parser.parse()
+    result = evaluate_feature_expression(ast, featureValues)
+    return result
+
 if __name__ == "__main__":
     # 测试表达式
     test_expressions = [
