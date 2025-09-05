@@ -47,6 +47,18 @@ def StorageInit ():
         Description="准备战斗"
         ))
     
+    BehaviorList.append(Behavior(
+        Id=2, 
+        Name="御魂挑战",
+        Behaviorkey="behavior_key_tiaozhan",
+        SenceKey="sence_key_tiaozhan",
+        EventKey="event_key_shuayuhun",
+        ActionId=2,
+        FeatureKey="feature_key_tiaozhananniu",
+        BehaviorActionType=BehaviorActionType.featurePos,
+        Description="御魂挑战"
+        ))
+    
     for behavior in BehaviorList:
         BehaviorMap[behavior.Id] = behavior
 

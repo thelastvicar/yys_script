@@ -67,6 +67,18 @@ def StorageInit():
         ScaleStep=5,
     ))
 
+    featureList.append(feature(
+        Id=2,
+        FeatureKey="feature_key_tiaozhananniu",
+        CompareType=featureCompareType.pic,
+        CompareThreshold=0.7,
+        LimitEventKeys=["event_key_shuayuhun"],
+        TemplatePath="templates\\tiaozhananniu.png",
+        MinScale=0.5,
+        MaxScale=1.2,
+        ScaleStep=5,
+    ))
+
     # 加载模板图片（遍历实例，避免变量名覆盖）
     current_script_dir = os.path.dirname(os.path.abspath(__file__))
     for feat in featureList:

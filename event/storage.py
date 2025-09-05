@@ -29,7 +29,7 @@ def StorageInit ():
         Id=1, 
         EventKey="event_key_shuayuhun",
         Description="刷御魂",
-        CheckFeatureKeys=["feature_key_zhunbeianniu"]
+        CheckFeatureKeys=["feature_key_zhunbeianniu", "feature_key_tiaozhananniu"]
         ))
     
     for event in EventList:

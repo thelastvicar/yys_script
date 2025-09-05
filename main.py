@@ -83,6 +83,11 @@ if __name__ == "__main__":
             print(f"Matched Sence: {sence.SenceKey}")
             context.CurrentSenceKey = sence.SenceKey
         
+        if len(hitSences) == 0:
+            print("no matching sence")
+            context = Context()
+            continue
+
         #行为匹配
         hitBehaviors = behaviorDomain.get_behaviors_by_scene_and_event(sence.SenceKey, event.EventKey)
         for behavior in hitBehaviors:
@@ -93,7 +98,7 @@ if __name__ == "__main__":
             action = actionDomain.GetActionById(behavior.ActionId)
             for pos in context.CurrentFeaturePosDict.get(behavior.FeatureKey, []):
                 print(f"Performing Action: {action.Id} at position {pos}")
-                actionDomain.PerformAction(action.Id, pos[0],pos[1])
+                actionDomain.PerformAction(action.Id, (pos[0]+pos[2])/2,(pos[1]+pos[3])/2)
                 
 
         # context清理
